@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project( sort )
+find_package( OpenCV REQUIRED )
+file(GLOB SORT_SRC "*.cpp" )
+add_executable( sort ${SORT_SRC} )
+target_link_libraries( sort ${OpenCV_LIBS} )
