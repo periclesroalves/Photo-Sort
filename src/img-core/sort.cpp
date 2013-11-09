@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    // The application expects a list of image paths to be received as parameters.
+    // The application expects a list of image paths as input parameters.
     PhotoCollection collection((argc - 1), &(argv[1]));
 
     vector<string> sortedPhotoNames = collection.similaritySort();
