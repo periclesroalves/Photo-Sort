@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+#include <limits>
 #include "PhotoCollection.h"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/features2d/features2d.hpp"
@@ -42,7 +43,7 @@ PhotoCollection::similaritySort()
         for (int i = 0; i < grayScalePhotos.size(); i++)
             if (numFPMatches[currentIdx][i] > max &&
                 std::find(sorted.begin(), sorted.end(), i) == sorted.end()) {
-                max  = numFPMatches[currentIdx][i];
+                max = numFPMatches[currentIdx][i];
                 maxIdx = i;
             }
 
@@ -60,7 +61,33 @@ PhotoCollection::similaritySort()
 vector<string>
 PhotoCollection::colorSort()
 {
-    return photoNames;
+    computeHistDistances();
+
+    vector<int> sorted;
+    int currentIdx = 0;
+    sorted.push_back(currentIdx);
+
+    // Greedly sort the images by histogram distance.
+    while (sorted.size() < hsvPhotos.size()) {
+        double min = numeric_limits<double>::max();
+        int minIdx;
+
+        for (int i = 0; i < hsvPhotos.size(); i++)
+            if (histDistances[currentIdx][i] < min &&
+                std::find(sorted.begin(), sorted.end(), i) == sorted.end()) {
+                min = histDistances[currentIdx][i];
+                minIdx = i;
+            }
+
+        currentIdx = minIdx;
+        sorted.push_back(currentIdx);
+    }
+
+    vector<string> sortedNames;
+    for (int i = 0; i < sorted.size(); i++)
+        sortedNames.push_back(photoNames[sorted[i]]);
+
+    return sortedNames;
 }
 
 void
@@ -151,4 +178,45 @@ PhotoCollection::numClusters()
         return 1;
 
     return (grayScalePhotos.size() / 3);
+}
+
+void
+PhotoCollection::computeHistDistances()
+{
+    // Using 30 bins for hue and 32 for saturation.
+    int hBins = 50;
+    int sBins = 60;
+    int histSize[] = {hBins, sBins};
+
+    // Hue varies from 0 to 256, saturation from 0 to 180.
+    float sRanges[] = {0, 256};
+    float hRanges[] = {0, 180};
+    const float* ranges[] = {hRanges, sRanges};
+    int channels[] = {0, 1};
+
+    // Initialize the distance matrix.
+    vector<double> line(hsvPhotos.size());
+    for (int i = 0; i < hsvPhotos.size(); i++) {
+        histDistances.push_back(line);
+    }
+
+    // Compute the distance between every pair of images.
+    for (int i = 0; i < hsvPhotos.size(); i++) {
+        MatND histBase;
+        calcHist(&(hsvPhotos[i]), 1, channels, Mat(), histBase, 2, histSize, ranges, true, false);
+        normalize(histBase, histBase, 0, 1, NORM_MINMAX, -1, Mat());
+
+        for (int j = i; j < hsvPhotos.size(); j++) {
+            MatND histCurrent;
+            calcHist(&(hsvPhotos[j]), 1, channels, Mat(), histCurrent, 2, histSize, ranges, true, false);
+            normalize(histCurrent, histCurrent, 0, 1, NORM_MINMAX, -1, Mat());
+            histDistances[i][j] = compareHist(histBase, histCurrent, 1);
+
+        }
+    }
+
+    // Complete the lower triagular part of the matrix with numbers already computed.
+    for (int i = 0; i < hsvPhotos.size(); i++)
+        for (int j = 0; j < i; j++)
+            histDistances[i][j] = histDistances[j][i];
 }

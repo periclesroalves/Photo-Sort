@@ -9,9 +9,14 @@ using namespace std;
 int main(int argc, char **argv)
 {
     // The application expects a list of image paths as input parameters.
-    PhotoCollection collection((argc - 1), &(argv[1]));
+    PhotoCollection collection((argc - 2), &(argv[2]));
 
-    vector<string> sortedPhotoNames = collection.similaritySort();
+    vector<string> sortedPhotoNames;
+    
+    if (argv[1][0] == 'c')
+        collection.colorSort();
+    else if(argv[1][0] == 'o')
+        collection.similaritySort();
 
     // Print ordered list of pictures.
     const char *outFileName = "order.txt";

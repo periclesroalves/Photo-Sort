@@ -13,6 +13,7 @@ class PhotoCollection
     std::vector<std::string> photoNames;
     std::vector<cv::Mat> featureDescriptors;
     std::vector<std::vector<int> > numFPMatches;
+    std::vector<std::vector<double> > histDistances;
 
   public:
     // Builds a colletion from a list of picture file names.
@@ -34,6 +35,9 @@ class PhotoCollection
     cv::Mat clusterize();
 
     int numClusters();
+
+    // Computes the similarity between the histograms of every pair of images.
+    void computeHistDistances();
 };
 
 } // namespace imgcore
