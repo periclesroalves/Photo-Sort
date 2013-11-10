@@ -12,12 +12,8 @@
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
-<?php require_once 'facebook-src/facebook.php';
+<?php require_once 'config.php';
 
-	$facebook = new Facebook(array(
- 	 'appId'  => '643775449019374',
- 	 'secret' => '082246d3941b60800f031b1731399311',
-  	));	
 ?>
 
 <body>
