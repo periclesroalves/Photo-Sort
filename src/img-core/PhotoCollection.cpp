@@ -4,6 +4,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/features2d/features2d.hpp"
 #include "opencv2/nonfree/features2d.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
 
 using namespace std;
 using namespace cv;
@@ -14,7 +15,12 @@ PhotoCollection::PhotoCollection(int numFiles, char **fileNames)
     // All images are initialized as gray-scale.
     for (int i = 0; i < numFiles; i++) {
         photoNames.push_back(fileNames[i]);
-        photos.push_back(imread(fileNames[i], IMREAD_GRAYSCALE));
+        grayScalePhotos.push_back(imread(fileNames[i], IMREAD_GRAYSCALE));
+
+        Mat src, hsv;
+        src = imread(fileNames[i], 1);
+        cvtColor(src, hsv, COLOR_BGR2HSV);
+        hsvPhotos.push_back(hsv);
     }
 }
 
@@ -29,11 +35,11 @@ PhotoCollection::similaritySort()
     sorted.push_back(currentIdx);
 
     // Greedly sort the images by number of matching point.
-    while (sorted.size() < photos.size()) {
+    while (sorted.size() < grayScalePhotos.size()) {
         int max = 0;
         int maxIdx;
 
-        for (int i = 0; i < photos.size(); i++)
+        for (int i = 0; i < grayScalePhotos.size(); i++)
             if (numFPMatches[currentIdx][i] > max &&
                 std::find(sorted.begin(), sorted.end(), i) == sorted.end()) {
                 max  = numFPMatches[currentIdx][i];
@@ -60,7 +66,7 @@ PhotoCollection::colorSort()
 void
 PhotoCollection::extractFeatureDescriptors()
 {
-    for (vector<Mat>::iterator photo = photos.begin(); photo != photos.end(); photo++) {
+    for (vector<Mat>::iterator photo = grayScalePhotos.begin(); photo != grayScalePhotos.end(); photo++) {
         // Compute SIFT feature keypoints.
         SiftFeatureDetector detector;
         vector<KeyPoint> keypoints;
@@ -82,14 +88,14 @@ PhotoCollection::computeNumFPMatches()
     BFMatcher matcher;
 
     // Initialize the match counter matrix.
-    vector<int> line(photos.size());
-    for (int i = 0; i < photos.size(); i++) {
+    vector<int> line(grayScalePhotos.size());
+    for (int i = 0; i < grayScalePhotos.size(); i++) {
         numFPMatches.push_back(line);
     }
 
     // Compute the matches between every pair of images.
-    for (int i = 0; i < photos.size(); i++) {
-        for (int j = (i+1); j < photos.size(); j++) {
+    for (int i = 0; i < grayScalePhotos.size(); i++) {
+        for (int j = (i+1); j < grayScalePhotos.size(); j++) {
             vector<vector<DMatch> > matches;
             matcher.knnMatch(featureDescriptors[i], featureDescriptors[j], matches, 2);  // Find two nearest matches
 
@@ -108,12 +114,12 @@ PhotoCollection::computeNumFPMatches()
     }
 
     // Complete the lower triagular part of the matrix with numbers already computed.
-    for (int i = 0; i < photos.size(); i++)
+    for (int i = 0; i < grayScalePhotos.size(); i++)
         for (int j = 0; j < i; j++)
             numFPMatches[i][j] = numFPMatches[j][i];
 
     // When comparing an image to itself, all points match.
-    for (int i = 0; i < photos.size(); i++) {
+    for (int i = 0; i < grayScalePhotos.size(); i++) {
         numFPMatches[i][i] = featureDescriptors[i].rows;
     }
 }
@@ -122,9 +128,9 @@ Mat
 PhotoCollection::clusterize()
 {
     // Build the features matrix.
-    Mat features = cvCreateMat(photos.size(), photos.size(), CV_32F);
-    for (int i = 0; i < photos.size(); i++) {
-        for (int j = 0; j < photos.size(); j++) {
+    Mat features = cvCreateMat(grayScalePhotos.size(), grayScalePhotos.size(), CV_32F);
+    for (int i = 0; i < grayScalePhotos.size(); i++) {
+        for (int j = 0; j < grayScalePhotos.size(); j++) {
             features.at<double>(i, j) = numFPMatches[i][j];
         }
     }
@@ -141,8 +147,8 @@ int
 PhotoCollection::numClusters()
 {
     // ~ Heuristics ~
-    if (photos.size() < 5)
+    if (grayScalePhotos.size() < 5)
         return 1;
 
-    return (photos.size() / 3);
+    return (grayScalePhotos.size() / 3);
 }

@@ -8,7 +8,8 @@ namespace imgcore {
 
 class PhotoCollection
 {
-    std::vector<cv::Mat> photos;
+    std::vector<cv::Mat> grayScalePhotos;
+    std::vector<cv::Mat> hsvPhotos; 
     std::vector<std::string> photoNames;
     std::vector<cv::Mat> featureDescriptors;
     std::vector<std::vector<int> > numFPMatches;
