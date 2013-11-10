@@ -10,6 +10,7 @@ class PhotoCollection
 {
     std::vector<cv::Mat> photos;
     std::vector<std::string> photoNames;
+    std::vector<cv::Mat> featureDescriptors;
 
   public:
     // Builds a colletion from a list of picture file names.
@@ -17,6 +18,9 @@ class PhotoCollection
 
     // Returns the photo file names in similarity order.
     std::vector<std::string> similaritySort();
+
+    // Extracts SIFT feaure point descriptors for each image.
+    void extractFeatureDescriptors();
 };
 
 } // namespace imgcore

@@ -1,2 +1,5 @@
 src/img-core/sort
-src/img-core/CMakeFiles/sort.dir/CXX.includecache
+src/img-core/CMakeCache.txt
+src/img-core/Makefile
+src/img-core/cmake_install.cmake
+src/img-core/CMakeFiles/

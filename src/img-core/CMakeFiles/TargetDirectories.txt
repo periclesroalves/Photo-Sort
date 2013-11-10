@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core/CMakeFiles/sort.dir
