@@ -1,0 +1,17 @@
+/*
+HTML 5 Template Name: Concept Clean
+File: IE CSS
+Author: OS Templates
+Author URI: http://www.os-templates.com/
+Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+.clear{zoom:1;}
+
+ul#social, ul#social li{display:inline;}
+
+#topnav ul{white-space:nowrap;}
+#topnav ul ul{white-space:normal;}
+#topnav ul li{*display:inline; overflow:auto;}
+
+#header form input{height:20px; padding-top:5px;}

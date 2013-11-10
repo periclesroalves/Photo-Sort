@@ -1,0 +1,17 @@
+/*
+HTML 5 Template Name: Concept Clean
+File: Gallery CSS
+Author: OS Templates
+Author URI: http://www.os-templates.com/
+Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+#gallery{display:block; width:100%; line-height:1.6em;}
+#gallery ul{margin:0; padding:0; list-style:none;}
+#gallery li{display:block; float:left; width:237px; height:237px; margin:0 0 4px 4px; padding:0;}
+#gallery li a img{display:block; border:1px solid #000000;}
+#gallery li a:hover img{border-color:#FF6600;}
+
+#gallery ul > li:first-child, 
+#gallery ul > li:first-child + li + li + li + li, 
+#gallery ul > li:first-child + li + li + li + li + li + li + li + li{margin-left:0;}
