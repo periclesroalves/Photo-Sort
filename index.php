@@ -80,8 +80,7 @@ if ($user) {
     <!-- / content body -->
   </div>
 </div>
-
-
+<div id="dialog-confirm" title="Choose sorting type"></div>
 
 <?php include_once "templates/footer.php";?>
 

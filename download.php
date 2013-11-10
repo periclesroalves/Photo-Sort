@@ -1,6 +1,13 @@
 <?php require_once 'config.php';
 echo 'hello';
 $album_id = $_GET['album_id'];
+$type = '';
+if($_GET['type'] == 1){
+	$type = 'c';
+}
+else{
+	$type = 'o';
+}
 $album = $facebook->api($album_id.'/photos', 'get' , array('limit' => 400));
 $data = $album['data'];
 $photos = array();
@@ -18,7 +25,7 @@ foreach($data as $photo){
 $paths = implode($photos,' ');
 
 //echo $paths;
-$pathToSort = './src/img-core/sort c';
+$pathToSort = './src/img-core/sort '.$type;
 
 echo exec('unset DYLD_LIBRARY_PATH ; '. $pathToSort.' '.$paths);
 
