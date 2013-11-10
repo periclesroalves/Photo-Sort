@@ -20,7 +20,8 @@ $(document).ready(function() {
         }
       }
     });
-	});		
+	});	
+		
 
 	$('.album').hover(function() {
      	   $(this).css('cursor','pointer');

@@ -81,6 +81,8 @@ if ($user) {
   </div>
 </div>
 <div id="dialog-confirm" title="Choose sorting type"></div>
+<div class="modal"><!-- Place at bottom of page --></div>
+
 
 <?php include_once "templates/footer.php";?>
 
