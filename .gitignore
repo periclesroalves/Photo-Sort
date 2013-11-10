@@ -2,4 +2,5 @@ src/img-core/sort
 src/img-core/CMakeCache.txt
 src/img-core/Makefile
 src/img-core/cmake_install.cmake
+photos
 src/img-core/CMakeFiles/
