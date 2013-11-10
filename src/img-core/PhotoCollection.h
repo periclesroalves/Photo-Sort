@@ -20,6 +20,9 @@ class PhotoCollection
     // Returns the photo file names in similarity order.
     std::vector<std::string> similaritySort();
 
+    // Returns the photo file names in color order.
+    std::vector<std::string> colorSort();
+
     // Extracts SIFT feaure point descriptors for each image.
     void extractFeatureDescriptors();
 
@@ -28,6 +31,8 @@ class PhotoCollection
 
     // Uses kmeans to clusterize similar images.
     cv::Mat clusterize();
+
+    int numClusters();
 };
 
 } // namespace imgcore

@@ -23,17 +23,22 @@ PhotoCollection::similaritySort()
 {
     extractFeatureDescriptors();
     computeNumFPMatches();
-    clusterize();
+    Mat labels = clusterize();
 
+    // Sort the phto names using the resulting clusters.
+    vector<string> sortedNames;
+    for (int i = 0; i < numClusters(); i++)
+        for (int j = 0; j < labels.rows; j++)
+            if (labels.at<int>(j, 0) == i) {
+                sortedNames.push_back(photoNames[j]);
+            }
+                
+    return sortedNames;
+}
 
-
-
-
-
-
-
-
-
+vector<string>
+PhotoCollection::colorSort()
+{
     return photoNames;
 }
 
@@ -115,13 +120,19 @@ PhotoCollection::clusterize()
     }
 
     Mat labels;
-    TermCriteria term(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 10, 1.0);  
-    int numClusters = photos.size() / 3;
+    TermCriteria term(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 10, 1.0);
 
-    if (photos.size() < 5)
-        numClusters = 1;
-
-    kmeans(features, numClusters, labels, term, 3, KMEANS_PP_CENTERS);
+    kmeans(features, numClusters(), labels, term, 3, KMEANS_PP_CENTERS);
 
     return labels;
+}
+
+int
+PhotoCollection::numClusters()
+{
+    // ~ Heuristics ~
+    if (photos.size() < 5)
+        return 1;
+
+    return (photos.size() / 3);
 }
