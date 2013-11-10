@@ -7,6 +7,10 @@
   <title>Photo Sort!</title>
   <meta name="description" content="Photo Sort App">
   <meta name="author" content="SitePoint">
+  
+  <meta charset="iso-8859-1">
+  <link rel="stylesheet" href="template/styles/layout.css" type="text/css">
+
 
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,6 +21,15 @@
 ?>
 
 <body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <hgroup>
+      <h1><a href="#">P<span>hoto</span> S<span>ort</span></a></h1>
+    </hgroup>
+
+  </header>
+</div>
+
 <script>
 
   // Additional JS functions here
@@ -49,4 +62,3 @@
   }
 </script>
 
-<h1>Photo Sort!</h1>

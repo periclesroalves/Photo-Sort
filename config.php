@@ -3,5 +3,6 @@
 	$facebook = new Facebook(array(
  	 'appId'  => '643775449019374',
  	 'secret' => '082246d3941b60800f031b1731399311',
+ 	 'fileUpload' => true,
   	));	
 ?>

@@ -103,7 +103,7 @@ blockquote:after, q:after{content:' „'; font-size:26px; line-height:0;}
 
 /*----------------------------------------------Content Area-------------------------------------*/
 
-#container{padding:50px 0; line-height:1.6em;}
+#container{padding:0; line-height:1.6em;}
 #container h1, #container h2, #container h3, #container h4, #container h5, #container h6{margin-bottom:20px;}
 #container section{display:block; width:100%; margin:0 0 40px 0; padding:0;}
 #container .last{margin:0;}
@@ -112,7 +112,7 @@ blockquote:after, q:after{content:' „'; font-size:26px; line-height:0;}
 /* ------Content-----*/
 
 #container #content{float:left; width:630px; margin-bottom:0;}
-
+#login{padding-bottom:10px;}
 /* ------Comments-----*/
 
 #comments ul{margin:0 0 40px 0; padding:0; list-style:none;}
