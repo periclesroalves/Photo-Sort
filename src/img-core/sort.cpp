@@ -14,9 +14,9 @@ int main(int argc, char **argv)
     vector<string> sortedPhotoNames;
     
     if (argv[1][0] == 'c')
-        collection.colorSort();
+        sortedPhotoNames = collection.colorSort();
     else if(argv[1][0] == 'o')
-        collection.similaritySort();
+        sortedPhotoNames = collection.similaritySort();
 
     // Print ordered list of pictures.
     const char *outFileName = "order.txt";
