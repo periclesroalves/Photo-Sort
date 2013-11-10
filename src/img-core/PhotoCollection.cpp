@@ -23,16 +23,31 @@ PhotoCollection::similaritySort()
 {
     extractFeatureDescriptors();
     computeNumFPMatches();
-    Mat labels = clusterize();
 
-    // Sort the phto names using the resulting clusters.
-    vector<string> sortedNames;
-    for (int i = 0; i < numClusters(); i++)
-        for (int j = 0; j < labels.rows; j++)
-            if (labels.at<int>(j, 0) == i) {
-                sortedNames.push_back(photoNames[j]);
+    vector<int> sorted;
+    int currentIdx = 0;
+    sorted.push_back(currentIdx);
+
+    // Greedly sort the images by number of matching point.
+    while (sorted.size() < photos.size()) {
+        int max = 0;
+        int maxIdx;
+
+        for (int i = 0; i < photos.size(); i++)
+            if (numFPMatches[currentIdx][i] > max &&
+                std::find(sorted.begin(), sorted.end(), i) == sorted.end()) {
+                max  = numFPMatches[currentIdx][i];
+                maxIdx = i;
             }
-                
+
+        currentIdx = maxIdx;
+        sorted.push_back(currentIdx);
+    }
+
+    vector<string> sortedNames;
+    for (int i = 0; i < sorted.size(); i++)
+        sortedNames.push_back(photoNames[sorted[i]]);
+
     return sortedNames;
 }
 
@@ -97,14 +112,9 @@ PhotoCollection::computeNumFPMatches()
         for (int j = 0; j < i; j++)
             numFPMatches[i][j] = numFPMatches[j][i];
 
-    // Make the diagonal equals the average of the numbers in the column, trying to reduce any noise.
+    // When comparing an image to itself, all points match.
     for (int i = 0; i < photos.size(); i++) {
-        int sum = 0;
-        for (int j = 0; j < photos.size(); j++)
-            if (i != j)
-                sum += numFPMatches[i][j];
-
-        numFPMatches[i][i] = sum / (photos.size() - 1);
+        numFPMatches[i][i] = featureDescriptors[i].rows;
     }
 }
 
