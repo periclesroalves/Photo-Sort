@@ -3,6 +3,7 @@ $(document).ready(function() {
 		var album_id = $(this).attr('id');
 	
     $( "#dialog-confirm" ).dialog({
+        dialogClass: 'no-close',
         resizable: false,
       	height:100,
       	modal: true,
