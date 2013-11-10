@@ -80,6 +80,47 @@ if ($user) {
     <!-- / content body -->
   </div>
 </div>
+
+<style>
+.ui-dialog {
+    left: 0;
+    outline: 0 none;
+    padding: 0 !important;
+    position: absolute;
+    top: 0;
+}
+
+#success {
+    padding: 0;
+    margin: 0; 
+}
+
+.ui-dialog .ui-dialog-content {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    overflow: auto;
+    position: relative;
+    padding: 0 !important;
+}
+
+.ui-widget-header {
+    background: #4F94D2;
+    border: 0;
+    color: #fff;
+    font-weight: normal;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    padding: 0.1em .5em;
+    position: relative;
+        font-size: 1em;
+}
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+</style>
+
 <div id="dialog-confirm" title="Choose sorting type"></div>
 
 <?php include_once "templates/footer.php";?>
