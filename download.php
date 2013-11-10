@@ -18,7 +18,7 @@ foreach($data as $photo){
 $paths = implode($photos,' ');
 
 //echo $paths;
-$pathToSort = './src/img-core/sort';
+$pathToSort = './src/img-core/sort c';
 echo exec('unset DYLD_LIBRARY_PATH ; '. $pathToSort.' '.$paths);
 
 // Create a new Album, and upload the sorted photos into that
