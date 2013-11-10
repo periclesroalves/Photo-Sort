@@ -1,1 +1,1 @@
-/Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core/CMakeFiles/sort.dir
+/Users/periclesalves/Documents/Intercambio/uw/hackathon/src/img-core/CMakeFiles/sort.dir

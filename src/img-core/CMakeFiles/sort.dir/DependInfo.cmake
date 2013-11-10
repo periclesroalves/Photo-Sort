@@ -4,20 +4,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core/PhotoCollection.cpp" "/Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core/CMakeFiles/sort.dir/PhotoCollection.cpp.o"
-  "/Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core/sort.cpp" "/Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core/CMakeFiles/sort.dir/sort.cpp.o"
+  "/Users/periclesalves/Documents/Intercambio/uw/hackathon/src/img-core/PhotoCollection.cpp" "/Users/periclesalves/Documents/Intercambio/uw/hackathon/src/img-core/CMakeFiles/sort.dir/PhotoCollection.cpp.o"
+  "/Users/periclesalves/Documents/Intercambio/uw/hackathon/src/img-core/sort.cpp" "/Users/periclesalves/Documents/Intercambio/uw/hackathon/src/img-core/CMakeFiles/sort.dir/sort.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "Clang")
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   )
-
-# The include file search paths:
-SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/local/include/opencv"
-  "/usr/local/include"
-  )
-SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

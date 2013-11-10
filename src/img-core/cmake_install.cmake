@@ -1,4 +1,4 @@
-# Install script for directory: /Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core
+# Install script for directory: /Users/periclesalves/Documents/Intercambio/uw/hackathon/src/img-core
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,7 +33,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/Users/periclesalves/Documents/Intercambio/uw/hackathon/src/img-core/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/Applications/MAMP/htdocs/photo_sort/Photo-Sort/src/img-core/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/Users/periclesalves/Documents/Intercambio/uw/hackathon/src/img-core/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

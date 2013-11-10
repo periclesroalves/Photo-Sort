@@ -9,8 +9,13 @@ CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/core/mat.h
 CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/core/operations.hpp
 CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/core/types_c.h
 CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/core/version.hpp
+CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/features2d/features2d.hpp
+CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/flann/config.h
+CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/flann/defines.h
+CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/flann/miniflann.hpp
 CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/highgui/highgui.hpp
 CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/highgui/highgui_c.h
+CMakeFiles/sort.dir/PhotoCollection.cpp.o: /usr/local/include/opencv2/nonfree/features2d.hpp
 
 CMakeFiles/sort.dir/sort.cpp.o: PhotoCollection.h
 CMakeFiles/sort.dir/sort.cpp.o: sort.cpp
