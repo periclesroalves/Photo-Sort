@@ -21,14 +21,6 @@
 ?>
 
 <body>
-<div class="wrapper row1">
-  <header id="header" class="clear">
-    <hgroup>
-      <h1><a href="#">P<span>hoto</span> S<span>ort</span></a></h1>
-    </hgroup>
-
-  </header>
-</div>
 
 <script>
 

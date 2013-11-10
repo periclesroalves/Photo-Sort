@@ -16,16 +16,15 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 
 html{overflow-y:scroll;}
 
-body{margin:0; padding:0; font-size:13px; font-family:Georgia, "Times New Roman", Times, serif; color:#737373; background-color:#2C2C2C;}
+body{margin:0; padding:0; font-size:13px; font-family:"Helvetica Narrow", sans-serif; color:#4F94D2; background-color:#4F94D2;}
 
 .clear:after{content:"."; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
 .clear{display:block; clear:both;}
 html[xmlns] .clear{display:block;}
 * html .clear{height:1%;}
 
-a{outline:none; text-decoration:none;}
 
-code{font-weight:normal; font-style:normal; font-family:Georgia, "Times New Roman", Times, serif;}
+code{font-weight:normal; font-style:normal; font-family:"Helvetica Narrow", sans-serif;}
 
 .fl_left{float:left;}
 .fl_right{float:right;}
@@ -39,16 +38,15 @@ img{margin:0; padding:0; border:none; line-height:normal; vertical-align:middle;
 
 address, article, aside, figcaption, figure, footer, header, hgroup, nav, section{display:block; margin:0; padding:0;}
 
-q{display:block; padding:0 10px 8px 10px; color:#979797; background-color:#ECECEC; font-style:italic; line-height:normal;}
+q{display:block; padding:0 10px 8px 10px; color:#979797; background-color:#4F94D2; font-style:italic; line-height:normal;}
 q:before{content:'“ '; font-size:26px;}
 q:after{content:' „'; font-size:26px; line-height:0;}
 
 /* ----------------------------------------------Wrapper-------------------------------------*/
 
 div.wrapper{display:block; width:100%; text-align:left;}
-div.wrapper a{color:#FF6600; background-color:#FFFFFF;}
 
-.row1, .row2, .row3, .row4{color:#989898; background-color:#FFFFFF;}
+.row1, .row2, .row3, .row4{color:#989898; background-color:#4F94D2;}
 
 .row1{border-top:5px solid #666666;}
 .row2{border-top:1px solid #ECECEC; border-bottom:1px solid #ECECEC;}
@@ -59,11 +57,11 @@ div.wrapper a{color:#FF6600; background-color:#FFFFFF;}
 
 #header, #topnav, #container, #footer, #copyright{display:block; width:960px; margin:0 auto; padding:0;}
 
-h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:16px; font-weight:bold; line-height:normal; color:#000000; background-color:#FFFFFF;}
+h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:16px; font-weight:bold; line-height:normal; color:#000000; background-color:#4F94D2;}
 
 address{font-style:normal;}
 
-blockquote, q{display:block; padding:8px 10px; color:#979797; background-color:#ECECEC; font-style:italic; line-height:normal;}
+blockquote, q{display:block; padding:8px 10px; color:#979797; background-color:#4F94D2; font-style:italic; line-height:normal;}
 blockquote:before, q:before{content:'“ '; font-size:26px;}
 blockquote:after, q:after{content:' „'; font-size:26px; line-height:0;}
 
@@ -87,10 +85,9 @@ blockquote:after, q:after{content:' „'; font-size:26px; line-height:0;}
 #header hgroup h1, #header hgroup h2{font-weight:normal; font-style:normal; text-transform:none;}
 #header hgroup h1{font-size:46px;}
 #header hgroup h1 span{font-size:36px; text-transform:uppercase;}
-#header hgroup h1 a{color:#000000; background-color:#FFFFFF;}
 #header hgroup h2{font-size:12px; text-align:right;}
 
-#social{display:inline-block; position:absolute; top:0; right:0; margin:0; padding:10px 15px; list-style:none; color:#000000; background-color:#ECECEC;}
+#social{display:inline-block; position:absolute; top:0; right:0; margin:0; padding:10px 15px; list-style:none; color:#000000; background-color:#4F94D2;}
 /* CSS3 Elements - Only works in latest browsers */
 #social{
 	-moz-border-radius:0 0 10px 10px;
@@ -117,10 +114,8 @@ blockquote:after, q:after{content:' „'; font-size:26px; line-height:0;}
 
 #comments ul{margin:0 0 40px 0; padding:0; list-style:none;}
 #comments li.comment_odd, #comments li.comment_even{margin:0 0 10px 0; padding:15px; list-style:none;}
-#comments li.comment_odd{color:#666666; background-color:#F7F7F7;}
-#comments li.comment_odd a{color:#FF6600; background-color:#F7F7F7;}
-#comments li.comment_even{color:#666666; background-color:#E8E8E8;}
-#comments li.comment_even a{color:#FF6600; background-color:#E8E8E8;}
+#comments li.comment_odd{color:#666666; background-color:#4F94D2;}
+#comments li.comment_even{color:#666666; background-color:#4F94D2;}
 #comments article, #comments header{display:block; width:100%;}
 #comments figure{float:right; margin:0 0 10px 10px; padding:3px; border:1px solid #DEDACB; text-align:center;}
 #comments figure img{float:inherit;}
@@ -165,5 +160,4 @@ aside h2{padding-bottom:8px; font-size:16px; text-transform:uppercase; border-bo
 /*----------------------------------------------Copyright-------------------------------------*/
 
 #copyright{padding:20px 0;}
-#copyright, #copyright a{color:#737373; background-color:#2C2C2C;}
 #copyright p{margin:0; padding: 0;}
