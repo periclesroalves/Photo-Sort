@@ -1,7 +1,6 @@
 <?php require_once 'config.php';
 echo 'hello';
 $album_id = $_GET['album_id'];
-
 $album = $facebook->api($album_id.'/photos', 'get' , array('limit' => 400));
 $data = $album['data'];
 $photos = array();
@@ -15,10 +14,12 @@ foreach($data as $photo){
     array_push($photos,$path);
 	//echo '<img src = '.$source.'></img>';	
 }
+
 $paths = implode($photos,' ');
 
 //echo $paths;
 $pathToSort = './src/img-core/sort c';
+
 echo exec('unset DYLD_LIBRARY_PATH ; '. $pathToSort.' '.$paths);
 
 // Create a new Album, and upload the sorted photos into that
@@ -48,7 +49,6 @@ while(!feof($file))
   catch(Exception  $e){
   	var_dump($e);
   }
-  
   
 fclose($file);
 unlink('order.txt');

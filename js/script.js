@@ -4,4 +4,4 @@ $('.album').click(function(){
 });
 $('.album').hover(function() {
         $(this).css('cursor','pointer');
-    });
+});

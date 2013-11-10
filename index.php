@@ -61,7 +61,7 @@ if ($user) {
      			$cover_photo = $facebook->api($album['cover_photo']);
      			$album_id = $album['id'];
      			$album_name = $album['name'];
-     			$html .= "<li class = 'album'><article><a><figure><img style='border-radius:4px; border: 2px solid #FFFFFF;' title = '".$album_name."' id = " . $album_id." src = " . $cover_photo["picture"] . "></img></figure><center><div style='height:7%; width:85%;border-radius:4px; border: 2px solid #FFFFFF; color:#ffffff;'><b>".$album_name."</b></div></center></a></article></li>";
+     			$html .= "<li id = ".$album_id." class = 'album'><article><a><figure><img style='border-radius:4px; border: 2px solid #FFFFFF;' title = '".$album_name."'  src = " . $cover_photo["picture"] . "></img></figure><center><div style='height:7%; width:85%;border-radius:4px; border: 2px solid #FFFFFF; color:#ffffff;'><b>".$album_name."</b></div></center></a></article></li>";
      			
      		}
      		$html = $html. "</ul></section>";
