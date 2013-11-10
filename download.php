@@ -61,5 +61,6 @@ fclose($file);
 unlink('order.txt');
 ?>
 <script type = 'text/javascript'>
-alert('Album was sorted and is now available on Facebook');
+alert('Your album was sorted and is now available on Facebook');
+location.reload();
 </script>
