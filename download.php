@@ -2,7 +2,7 @@
 echo 'hello';
 $album_id = $_GET['album_id'];
 
-$album = $facebook->api($album_id.'/photos');
+$album = $facebook->api($album_id.'/photos', 'get' , array('limit' => 400));
 $data = $album['data'];
 $photos = array();
 foreach($data as $photo){
@@ -10,6 +10,7 @@ foreach($data as $photo){
 	$source = $photo['source'];
 	$path = 'photos/'.$id.'.jpg';
 	file_put_contents($path, file_get_contents($source));
+	chmod($path,0777);
 	//echo $id . ' downloaded</br>';
     array_push($photos,$path);
 	//echo '<img src = '.$source.'></img>';	
@@ -19,6 +20,8 @@ $paths = implode($photos,' ');
 //echo $paths;
 $pathToSort = './src/img-core/sort';
 echo exec('unset DYLD_LIBRARY_PATH ; '. $pathToSort.' '.$paths);
+
+// Create a new Album, and upload the sorted photos into that
 
 $facebook->setFileUploadSupport(true);
 $album_details = array('message'=>'Album Description','name' => 'Sorted Album');
@@ -30,17 +33,26 @@ $album_uid = $create_album['id'];
 
 $file = fopen("order.txt", "r") or exit("Unable to open file!");
 //Output a line of the file until the end is reached
+try{
 while(!feof($file))
   {//Upload a photo to album of ID...
+	$photo_file=fgets($file); 
 	$photo_details = array(
-    	'message'=> 'Photo message'
+    	'message'=> 'Photo message', 
+   		'source' => trim('@/Applications/MAMP/htdocs/photo_sort/Photo-Sort/'.$photo_file)  
 	);
-	$photo_file=fgets($file); //Example image file
-	echo $photo_file;
-	$photo_details['image'] = '@' . realpath($photo_file);
 	$upload_photo = $facebook->api('/'.$album_uid.'/photos', 'post', $photo_details);
+	unlink(trim($photo_file));
+  }
+  }
+  catch(Exception  $e){
+  	var_dump($e);
   }
   
+  
 fclose($file);
-
+unlink('order.txt');
 ?>
+<script type = 'text/javascript'>
+alert('Album was sorted and is now available on Facebook');
+</script>

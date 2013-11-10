@@ -25,7 +25,7 @@ if ($user) {
 if ($user) {
   $logoutUrl = $facebook->getLogoutUrl();
 } else {
-  $loginUrl = $facebook->getLoginUrl(array("scope" => "user_photos,photo_upload,publish_stream","redirect_uri" => "http://localhost:8888/photo_sort/Photo-Sort/"));
+  $loginUrl = $facebook->getLoginUrl(array("scope" => "read_stream, publish_stream, photo_upload, user_photos, user_photo_video_tags","redirect_uri" => "http://localhost:8888/photo_sort/Photo-Sort/"));
 }
 
 ?>
