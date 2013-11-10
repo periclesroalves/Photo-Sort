@@ -1,24 +1,38 @@
+
+
+<?php include_once "templates/header.php" ;?>
 <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 
+</br>
+<?php
+$user = $facebook->getUser();
+if ($user) {
+  try {
+    
+    $user_profile = $facebook->api('/me');
+	
+    $user_album = $facebook->api('/me/albums');
+    var_dump($user_album);
+    
+  } catch (FacebookApiException $e) {
+    error_log($e);
+    $user = null;
+  }
+}
+else{
 
-<?php include_once "templates/header.php" ;
-  	echo "test";
+ $params = array('scope' => 'publish_stream, user_photos,friends_photos ','redirect_url' => 'http://localhost:8888/photo_sort/Photo-Sort/');   //Requesting User Permissions through Facebook App
+                                    
+ $login_url = $facebook->getLoginUrl( $params );//Login URL
+ echo '<a href="' . $login_url . '"><div class="fb-login-button" data-width="200"></div></a>';
+} 
 
-	$facebook = new Facebook(array(
- 	 'appId'  => '643775449019374',
- 	 'secret' => '76b91ccb3a4880dbdceaded8f7454095',
- 	 'cookie' => true,
-  	));	
-  	 echo "test";
 
-  	$access_token = $facebook->getAccessToken();
-  	echo "test";
-	echo $access_token;
-  	$albums = $facebook->api('/me/albums');
-   	var_dump($albums);
 ?>
-<p>test</p>
 
 
-<?php include_once "templates/footer.php" ?>
+
+
+
+<?php include_once "templates/footer.php";?>
 
