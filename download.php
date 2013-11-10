@@ -9,7 +9,6 @@ $photos = array();
 foreach($data as $photo){
 	$id = $photo['id'];
 	$source = $photo['source'];
-	echo $source . '</br>';
 	$path = 'photos/'.$id.'.jpg';
 	file_put_contents($path, file_get_contents($source));
 	//echo $id . ' downloaded</br>';
