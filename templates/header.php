@@ -12,31 +12,38 @@
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
+<?php include_once "../facebook-src/facebook.php";?>
 
 <body>
-<script type = "text/javascript">
-// Additional JS functions here
+<script>
+  // Additional JS functions here
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '643775449019374', // App ID
+      channelUrl : 'http://localhost:8888/photo_sort/Photo-Sort/', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
 
-	window.fbAsyncInit = function() {
-		FB.init({
-      		appId      : '643775449019374', // App ID
-      		status     : true,    // check login status
-      		cookie     : true,    // enable cookies to allow the
-                            // server to access the session
-      		xfbml      : true     // parse page for xfbml or html5
-                            // social plugins like login button below
-    	});
+    // Additional init code here
+  };
 
-	// Put additional init code here
-	};
-	//Load SDK 
-	(function(d, s, id){
-     	var js, fjs = d.getElementsByTagName(s)[0];
-     	if (d.getElementById(id)) {return;}
-     	js = d.createElement(s); js.id = id;
-     	js.src = "//connect.facebook.net/en_US/all.js";
-     	fjs.parentNode.insertBefore(js, fjs);
-   	}(document, 'script', 'facebook-jssdk'));
+  // Load the SDK asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+   
+    function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Good to see you, ' + response.name + '.');
+    });
+  }
 </script>
 
 <h1>Photo Sort!</h1>
