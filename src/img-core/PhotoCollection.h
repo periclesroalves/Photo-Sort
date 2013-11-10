@@ -27,7 +27,7 @@ class PhotoCollection
     void computeNumFPMatches();
 
     // Uses kmeans to clusterize similar images.
-    void clusterize();
+    cv::Mat clusterize();
 };
 
 } // namespace imgcore

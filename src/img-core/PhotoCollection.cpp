@@ -103,7 +103,7 @@ PhotoCollection::computeNumFPMatches()
     }
 }
 
-void
+Mat
 PhotoCollection::clusterize()
 {
     // Build the features matrix.
@@ -122,4 +122,6 @@ PhotoCollection::clusterize()
         numClusters = 1;
 
     kmeans(features, numClusters, labels, term, 3, KMEANS_PP_CENTERS);
+
+    return labels;
 }
